@@ -11,8 +11,8 @@ Vue.use(VueRouter)
 import {routes} from "./routes";
 
 const router = new VueRouter({
-    mode:'history',
-    linkActiveClass:'active',
+    mode:'hash',
+  /*  linkActiveClass:'active',*/
     routes // short for `routes: routes`
 });
 
@@ -48,6 +48,21 @@ const Toast = Swal.mixin({
     timerProgressBar: true,
 });
 window.Toast=Toast;
+
+
+
+/*Moment js for Date time Format:*/
+import moment from 'moment';
+Vue.filter('myDate',function (created) {
+    return moment(created).format('MMMM Do YYYY, h:mm:ss a');
+});
+
+
+
+
+
+
+
 
 Vue.component('footer-component', require('./components/admin/partials/FooterComponent.vue').default);
 Vue.component('master-component', require('./components/admin/MasterComponent.vue').default);

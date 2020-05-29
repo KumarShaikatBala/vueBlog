@@ -15,13 +15,15 @@
                         <tr>
                             <th>Sl</th>
                             <th>Name</th>
+                            <th>Created</th>
                             <th>Modify</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr >
-                            <td></td>
-                            <td></td>
+                        <tr v-for="(category,index) in getCategory" :key="category.id">
+                            <td>{{index+1}}</td>
+                            <td>{{category.name}}</td>
+                            <td>{{category.created_at |myDate}}</td>
                             <td>
                                 <a href="javascript:void(0)" ><i class="fa fa-trash"></i>Delete</a>
                                 <a href="javascript:void(0)" ><i class="fa fa-edit"></i>Edit</a>
@@ -41,7 +43,17 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            this.$store.dispatch('getAll')
+        },
+        computed:{
+            getCategory(){
+               return  this.$store.getters.getCategory
+
+            }
+
+        },
+        methods:{
+
         }
     }
 </script>
